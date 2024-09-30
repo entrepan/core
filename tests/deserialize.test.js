@@ -1,4 +1,4 @@
-const { expect, factory, deserialize, describe, it } = require('../lib');
+const { expect, ioc, deserialize, describe, it } = require('../lib');
 const LinkedList = require('./linked-list');
 const LinkedListNode = require('./linked-list-node');
 
@@ -9,8 +9,8 @@ describe('deserialize', () => {
     expect(actual).toEqual(7);
   });
   it('Should deserialize a complex object', () => {
-    factory.register(LinkedList);
-    factory.register(LinkedListNode);
+    ioc.register(LinkedList);
+    ioc.register(LinkedListNode);
     const input = {
       refs: [
         {

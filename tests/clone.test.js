@@ -1,4 +1,4 @@
-const { expect, factory, SHELVES, clone, describe, it } = require('../lib');
+const { expect, ioc, SHELVES, clone, describe, it } = require('../lib');
 
 const Vector = require('./vector');
 
@@ -156,8 +156,8 @@ describe('clone', () => {
     expect(b.arr).toEqual(a.arr);
   });
 
-  it('Can clone instances of a clase with cloning registered in factory', () => {
-    factory.register(URL, (obj) => new URL(obj.href), SHELVES.cloners);
+  it('Can clone instances of a clase with cloning registered in ioc', () => {
+    ioc.register(URL, (obj) => new URL(obj.href), SHELVES.Cloners);
     const url = new URL('https://example.org');
     const actual = clone(url);
     expect(actual).toBeInstanceOf(URL);
